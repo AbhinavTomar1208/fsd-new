@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Form</title>
+  <style>
+    body {
+        background: linear-gradient(135deg, #05c46b 0%, #48dbfb 100%);
+        font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        text-align: center;
+    }
+
+    h1 {
+        color: #fff;
+        margin-top: 40px;
+        letter-spacing: 2px;
+        text-shadow: 1px 2px 8px rgba(0,0,0,0.15);
+    }
+
+    form {
+        background: rgba(255,255,255,0.97);
+        max-width: 500px;
+        margin: 40px auto 0 auto;
+        padding: 35px 28px 28px 28px;
+        box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+        border-radius: 18px;
+        border: 1px solid #e0e0e0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .form-control {
+        text-align: left;
+        margin-bottom: 22px;
+        position: relative;
+    }
+
+    .form-control label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #222f3e;
+        letter-spacing: 0.5px;
+    }
+
+    .form-control small {
+        color: #8395a7;
+        font-size: 12px;
+        margin-left: 4px;
+    }
+
+    input, select, textarea {
+        border: 1.5px solid #b2bec3;
+        border-radius: 5px;
+        padding: 11px 12px;
+        width: 100%;
+        font-size: 15px;
+        font-family: inherit;
+        transition: border 0.2s;
+        background: #f8f9fa;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border-color: #05c46b;
+        background: #eafaf1;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+        width: auto;
+        margin-right: 8px;
+        accent-color: #05c46b;
+        vertical-align: middle;
+    }
+
+    .form-control label input[type="radio"],
+    .form-control label input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+        margin-right: 8px;
+    }
+
+    textarea {
+        min-height: 70px;
+        resize: vertical;
+    }
+
+    button {
+        background: linear-gradient(90deg, #05c46b 60%, #48dbfb 100%);
+        color: #fff;
+        border: none;
+        padding: 15px 0;
+        width: 100%;
+        border-radius: 6px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 18px;
+        box-shadow: 0 2px 8px rgba(5,196,107,0.08);
+        transition: background 0.2s, box-shadow 0.2s;
+        letter-spacing: 1px;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #048a4b 60%, #0099cc 100%);
+        box-shadow: 0 4px 16px rgba(5,196,107,0.15);
+    }
+</style>
+</head>
+<body>
+  <h1>Survey Form</h1>
+  <form id="surveyForm">
+    <div class="form-control">
+      <label for="name">Name*</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+    </div>
+    <div class="form-control">
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email">
+    </div>
+    <div class="form-control">
+      <label for="role">Occupation*</label>
+      <select id="role" name="role">
+        <option value="">Select...</option>
+        <option value="student">Student</option>
+        <option value="developer">Developer</option>
+        <option value="designer">Designer</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label>Recommend us?</label>
+      <label>
+        <input type="radio" name="recommend" value="yes">Yes
+      </label>
+      <label>
+        <input type="radio" name="recommend" value="no">No
+      </label>
+      <label>
+        <input type="radio" name="recommend" value="maybe">Maybe
+      </label>
+    </div>
+    <div class="form-control">
+      <label>Technologies Known
+        <small>(Check all that apply)</small>
+      </label>
+      <label><input type="checkbox" name="tech[]" value="HTML">HTML</label>
+      <label><input type="checkbox" name="tech[]" value="CSS">CSS</label>
+      <label><input type="checkbox" name="tech[]" value="JavaScript">JavaScript</label>
+      <label><input type="checkbox" name="tech[]" value="Python">Python</label>
+      <label><input type="checkbox" name="tech[]" value="C++">C++</label>
+    </div>
+    <div class="form-control">
+      <label for="comments">Any comments or suggestions?</label>
+      <textarea id="comments" name="comments" placeholder="Write here..."></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
