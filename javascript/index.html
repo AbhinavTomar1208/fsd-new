@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+.todo-container {
+  background: #fff;
+  padding: 2rem;
+  margin-top: 5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 350px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.input-section {
+  display: flex;
+  gap: 0.5rem;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  background-color: #0078D4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005ea2;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+li {
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+li:hover {
+  background: #e0e0e0;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+.tickbtn, .delbtn {
+  align-items: end;
+  margin-left: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #0078D4;
+}
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h1>My Tasks</h1>
+    <div class="input-section">
+      <input type="text" id="taskInput" placeholder="Add a new task..." />
+      <button id="addbtn">Add</button>
+    </div>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    const taskinput = document.getElementById("taskInput");
+    const addbtn=document.getElementById("addbtn");
+    const taskList = document.getElementById("taskList");
+    addbtn.addEventListener("click",addTask);
+    function addTask() {
+      const taskText = taskinput.value.trim();
+      if (taskText !== "") {
+        const li = document.createElement("li");
+        const span=document.createElement("span");
+        span.textContent = taskText;
+        // li.onclick = () => li.classList.toggle("completed");
+        const completeBtn = document.createElement("button");
+    completeBtn.className = "tickbtn";
+    completeBtn.textContent = "✓";
+    completeBtn.addEventListener("click", function (e) {
+      li.classList.toggle("completed");
+    });
+
+    // Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "delbtn";
+    deleteBtn.textContent = "🗑️";
+    deleteBtn.addEventListener("click", function (e) {
+      taskList.removeChild(li);
+    });
+
+    li.appendChild(span);
+    li.appendChild(completeBtn);
+    li.appendChild(deleteBtn);
+    taskList.appendChild(li);
+    taskinput.value = "";
+      }
+    }
+  </script>
+</body>
+</html>

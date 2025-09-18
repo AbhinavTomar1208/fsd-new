@@ -1,0 +1,9 @@
+d=document.getElementById("demo");
+d.innerText="hello world";
+d.style.color="red";
+d.style.backgroundColor="yellow";
+d.style.fontSize="30px";
+d.style.textAlign="center";
+d.style.border="2px solid black";
+d.style.padding="10px";
+d.style.margin="20px";
