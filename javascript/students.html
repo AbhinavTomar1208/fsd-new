@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+}
+
+.container {
+    display: flex;
+    gap: 40px;
+    margin: 32px auto;
+    max-width: 1100px;
+}
+
+.main {
+    flex: 2;
+    background: #fff;
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #ccc;
+}
+
+.controls {
+    flex: 1;
+    background: #fafafa;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px #ccc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+}
+
+th, td {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #f0f7fc;
+}
+
+.add-student input[type="text"], .add-student input[type="number"] {
+    padding: 8px;
+    margin: 6px 2px 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 45%;
+}
+
+button {
+    background: #3b74f2;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin: 4px 0 4px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #1656b9;
+}
+
+/* Responsive for small screens */
+@media (max-width: 900px) {
+    .container { flex-direction: column; }
+    .main, .controls { width: 100%; }
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <section class="main">
+            <h2>Student Marks System</h2>
+            <table id="studentsTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="totalStudents"></div>
+        </section>
+        <aside class="controls">
+            <div>
+                <button onclick="showHighest()">Show Highest</button>
+                <button onclick="showAverage()">Show Average</button>
+            </div>
+            <div>
+                <button onclick="sortByMarks()">Sort by Marks</button>
+                <button onclick="resetSample()">Reset Sample</button>
+            </div>
+            <div>
+                <button onclick="removeLast()">Remove Last</button>
+            </div>
+            <div class="add-student">
+                <input type="text" id="studentName" placeholder="Student name">
+                <input type="number" id="studentMarks" placeholder="Marks (0-100)">
+                <button onclick="addStudent()">Add Student</button>
+                <p>Tip: Press Enter in the Marks field to add quickly.</p>
+            </div>
+        </aside>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
