@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .main{
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1{
+            text-align: center;
+            color: #333;
+        }
+        .add-student{
+            margin-bottom: 20px;
+        }
+        .add-student input[type="text"], .add-student input[type="number"]{
+            padding: 8px;
+            margin: 5px 10px 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 40%;
+        }
+        .add-student button{
+            padding: 8px 12px;
+            margin: 5px 5px 5px 0;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .add-student button:hover{
+            background-color: #218838;
+        }
+        #result{
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-height: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Students Marks System</h1>
+        <form class="add-student">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" placeholder="Enter Student Name" required><br>
+            <label for="marks">Marks:</label><br>
+            <input type="number" id="marks" placeholder="Marks" required><br>
+            <button type="button" onclick="addStudent()">Add Student</button><br><br>
+            <button type="button" onclick="findTopper()">Topper</button>
+            <button type="button" onclick="showAverage()">Average</button>
+            <button type="button" onclick="showAll()">Show All</button>
+            <button type="button" onclick="passedStudents()">Passed Students</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        var stud=[];
+        function addStudent(){
+            var name=document.getElementById("name").value;
+            var marks=parseInt(document.getElementById("marks").value);
+            stud.push({name:name,marks:marks});
+            document.getElementById("name").value="";
+            document.getElementById("marks").value="";
+        }
+        function showAll(){
+            var res=document.getElementById('result');
+            res.innerHTML=stud.map(s=>s.name+" : "+s.marks).join("<br>");
+            
+        }
+        function findTopper(){
+            if(stud.length===0){
+                alert("No students added");
+                return;
+            }
+            var topper=stud.reduce((max,s)=>s.marks>max.marks?s:max);
+            document.getElementById('result').innerHTML="Topper: "+topper.name+" with marks "+topper.marks;
+        }
+        function showAverage(){
+            if(stud.length===0){
+                alert("No students added");
+                return;
+            }
+            var total=stud.reduce((sum,s)=>sum+s.marks,0);
+            var avg=total/stud.length;
+            document.getElementById('result').innerHTML="Average Marks: "+avg;
+        }
+        function passedStudents(){
+            var passed=stud.filter(s=>s.marks>=40);
+            if(passed.length===0){
+                document.getElementById('result').innerHTML="No students passed";
+                return;
+            }
+            document.getElementById('result').innerHTML=passed.map(s=>s.name+" : "+s.marks).join("<br>");
+        }
+    </script>
+</body>
+</html>

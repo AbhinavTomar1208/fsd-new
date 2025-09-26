@@ -1,21 +1,27 @@
 // script.js
 let students = [];
 
-function renderTable() {
+function renderTable(Allstud) {
     const tbody = document.querySelector("#studentsTable tbody");
     tbody.innerHTML = "";
-    students.forEach(student => {
+    Allstud.forEach(student => {
         const row = document.createElement("tr");
         row.innerHTML = `<td>${student.name}</td><td>${student.marks}</td>`;
         tbody.appendChild(row);
     });
-    document.getElementById("totalStudents").textContent = `Total students: ${students.length}`;
+    document.getElementById("totalStudents").textContent = `Total students: ${Allstud.length}`;
+}
+function PassedStudents() {
+    const passed = students.filter(s => s.marks >= 40);
+    if(passed.length === 0) return alert("No passed students!");
+    const names = passed.map(s => s.name).join(", ");
+    renderTable(passed);
 }
 
 function showHighest() {
     if(students.length === 0) return alert("No students!");
     const highest = students.reduce((max, s) => s.marks > max.marks ? s : max, students[0]);
-    alert(`Highest: ${highest.name} (${highest.marks})`);
+    renderTable([highest]);
 }
 
 function showAverage() {
@@ -26,19 +32,19 @@ function showAverage() {
 
 function sortByMarks() {
     students.sort((a, b) => b.marks - a.marks);
-    renderTable();
+    renderTable(students);
 }
 
 function removeLast() {
     if(students.length > 0) {
         students.pop();
-        renderTable();
+        renderTable(students);
     }
 }
 
 function resetSample() {
     students = [];
-    renderTable();
+    renderTable(students);
 }
 
 function addStudent() {
