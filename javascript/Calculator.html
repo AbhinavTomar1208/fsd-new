@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    /* height: 100vh; */
+    }
+    #main {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+    }
+    button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    }
+    button:hover {
+    background: #0056b3;
+    }
+    h2 {
+    margin-top: 20px;
+    }
+    ul {
+    list-style-type: none;
+    padding: 0;
+    }
+    ul li {
+    background: #f1f1f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex; 
+    justify-content: space-between;
+    }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1>Simple Calculator</h1>
+        <input type="number" id="num1" placeholder="First Number">
+        <input type="number" id="num2" placeholder="Second Number">
+        <br><br>
+        <button onclick="add()">+</button>
+        <button onclick="subtract()">-</button>
+        <button onclick="multiply()">*</button>
+        <button onclick="divide()">/</button>
+        <h2 id="result">Result: </h2>
+        <ul id="taskList"></ul>
+    </div>
+    <script>
+    var n=document.getElementById("num1");
+    var m=document.getElementById("num2");
+    const taskList=document.getElementById("taskList");
+    function add(){
+        var r=(parseFloat(n.value)+parseFloat(m.value)).toString();
+        addTask(n.value+" + "+m.value+"="+r);
+    }
+    function subtract(){
+        var r=parseFloat(n.value)-parseFloat(m.value);
+        addTask(n.value+" - "+m.value+"="+r);
+    }
+    function multiply(){
+        var r=parseFloat(n.value)*parseFloat(m.value);
+        addTask(n.value+" * "+m.value+"="+r);
+    }
+    function divide(){
+        var r=parseFloat(n.value)/parseFloat(m.value);
+        addTask(n.value+" / "+m.value+"="+r);
+    }
+    function addTask(taskinput) {
+      const taskText = taskinput;
+      if (taskText !== "") {
+        const li = document.createElement("li");
+        const span=document.createElement("span");
+        span.textContent = taskText;
+        // li.onclick = () => li.classList.toggle("completed");
+    // Delete Button
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delbtn";
+        deleteBtn.textContent = "🗑️";
+        deleteBtn.addEventListener("click", function (e) {
+        taskList.removeChild(li);
+        });
+
+        li.appendChild(span);
+        li.appendChild(deleteBtn);
+        taskList.appendChild(li);
+        taskinput.value = "";
+      }
+}
+    </script>
+</body>
+</html>
