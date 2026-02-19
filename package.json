@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "http": "^0.0.1-security",
     "mongodb": "^7.1.0",
     "promise": "^8.3.0",
