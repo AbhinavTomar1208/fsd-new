@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "http": "^0.0.1-security",
+    "mongodb": "^7.1.0",
+    "promise": "^8.3.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
