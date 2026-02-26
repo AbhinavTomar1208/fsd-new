@@ -16,18 +16,10 @@ function App() {
   const [searchId, setSearchId] = useState('')
   const [searchResult, setSearchResult] = useState(null)
   const [errors, setErrors] = useState({})
-
-  // Load users from localStorage
   useEffect(() => {
-    // Data not persisted - starts fresh on reload
   }, [])
-
-  // Save to localStorage
   useEffect(() => {
-    // No localStorage - data only in session
   }, [users])
-
-  // Validate form
   const validateForm = () => {
     const newErrors = {}
     if (!formData.name.trim()) newErrors.name = 'Name required'
@@ -70,22 +62,16 @@ function App() {
     
     setFormData({ name: '', contact: '', email: '', designation: '', company: '', address: '' })
   }
-
-  // Edit user
   const handleEdit = (user) => {
     setFormData(user)
     setEditingId(user.id)
     window.scrollTo(0, 0)
   }
-
-  // Delete user
   const handleDelete = (id) => {
     if (window.confirm('Delete this user?')) {
       setUsers(users.filter(user => user.id !== id))
     }
   }
-
-  // Cancel edit
   const handleCancel = () => {
     setEditingId(null)
     setFormData({ name: '', contact: '', email: '', designation: '', company: '', address: '' })
@@ -103,7 +89,6 @@ function App() {
     <div className="container">
       <h1>User Management System</h1>
 
-      {/* Form */}
       <div className="form-box">
         <h2>{editingId ? 'Edit User' : 'Add User'}</h2>
         <form onSubmit={handleSubmit}>
